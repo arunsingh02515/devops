@@ -1,9 +1,12 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent any
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
     stages {
-        stage('build') {
+        stage('Example') {
             steps {
-                sh 'mvn --version'
+                echo "${params.Greeting} World!"
             }
         }
     }
