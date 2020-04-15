@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+    PATH= "/home/oracle/Downloads/apache-maven/bin:$PATH"
+    }
     stages {
         stage('Build') {
             steps {
