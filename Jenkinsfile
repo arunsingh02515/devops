@@ -10,13 +10,13 @@ pipeline {
         }
 
 
-    stage {
+
             stage('compile') {
                 steps {
                     echo "compiling the code"
                     sh "mvn compile"
                 }
             }
-        }
+
 }
 }
