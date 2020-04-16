@@ -3,27 +3,21 @@ pipeline {
      tools {
          maven 'maven123'
          jdk    'jdk1.8'
+         org.jenkinsci.plugins.docker.commons.tools.DockerTool  'mydocker'
          }
     stages {
-     stage ('Initialize') {
-                 steps {
-                     sh '''
-                         echo "PATH = ${PATH}"
-                         echo "M2_HOME = ${M2_HOME}"
-                     '''
-                 }
-             }
+
         stage('Build') {
             steps {
                 echo "building the code"
-                sh "mvn clean"
+                sh "mvn clean install"
             }
         }
 
-            stage('compile') {
+            stage('docker build') {
                 steps {
-                    echo "compiling the code"
-                    sh "mvn compile"
+                    echo "building images
+                    sh "docker build . -t arunksingh015/kubernet:v1"
                 }
             }
 
