@@ -6,7 +6,7 @@ pipeline {
          }
     stages {
 
-        stage('Build') {
+        stage('build war') {
             steps {
                 echo "building the code"
                 sh "mvn clean install"
@@ -15,7 +15,7 @@ pipeline {
 
             stage('docker build') {
                 steps {
-                    echo "building images
+                    echo "building images"
                     sh "docker.build . -t arunksingh015/kubernet:v1"
                 }
             }
