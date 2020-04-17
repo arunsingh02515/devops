@@ -4,10 +4,6 @@ pipeline {
          maven 'maven123'
          jdk    'jdk1.8'
          }
-     environment {
-
-       TAG=createTag()
-     }
     stages {
 
         stage('build war') {
@@ -20,16 +16,10 @@ pipeline {
             stage('docker build') {
                 steps {
                     echo "building images"
-                    sh "docker build . -t arunksingh015/kubernet:${TAG}"
+                    sh "docker build . -t arunksingh015/kubernet:${env.BUILD_NUMBER}"
                 }
             }
 
 }
 }
 
-def createTag(){
-
- val= "v1"+${env.BUILD_NUMBER}
- return val
-
-}
