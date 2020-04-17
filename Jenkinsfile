@@ -28,6 +28,8 @@ pipeline {
 }
 
 def createTag(){
- return "v1"+${env.BUILD_NUMBER}
+
+ val= "v1"+${env.BUILD_NUMBER}
+ return val
 
 }
