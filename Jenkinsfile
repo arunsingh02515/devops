@@ -16,7 +16,7 @@ pipeline {
             stage('docker build') {
                 steps {
                     echo "building images"
-                    sh "docker build . -t arunksingh015/kubernet:v1 ${env.BUILD_NUMBER}"
+                    sh "docker build . -t arunksingh015/kubernet:v1+${env.BUILD_NUMBER}"
                 }
             }
 
