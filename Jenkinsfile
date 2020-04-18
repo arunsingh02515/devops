@@ -29,6 +29,28 @@ pipeline {
 
                             }
                         }
+               stage('deploy on kube ') {
+                         steps {
+                              echo "deploy on kube"
+                              sh "chmod +x changeTag.sh"
+                              sh "./changeTag.sh ${env.BUILD_NUMBER}"
+                              sshagent(['kube-ssh']) {
+                                     sh scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml admin@13.234.111.92:/home/admin
+
+                                      script {
+                                         try {
+                                          sh "ssh admin@13.234.111.92 kubectl apply -f ."
+                                         }
+                                      catch(error) {
+                                      sh "ssh admin@13.234.111.92 kubectl create -f ."
+                                      }
+
+                                      }
+                                       }
+                                           }
+                                       }
+
+
 
 
 
