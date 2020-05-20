@@ -2,5 +2,12 @@
 - hosts: test
   remote_user: astha
   tasks:
+  - name: Set up multiple authorized keys
+    authorized_key:
+      user: astha
+      state: present
+      key: '{{ item }}'
+    with_file:
+      - public-key.pub
   -  name: Deploy jar
      copy: src=/var/lib/jenkins/workspace/firstpipeline/target/backend-0.0.1-SNAPSHOT.jar dest=/tmp
