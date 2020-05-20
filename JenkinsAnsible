@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+     tools {
+         maven 'maven123'
+         jdk    'jdk1.8'
+         }
+    stages {
+
+        stage('build war') {
+            steps {
+                echo "building the code"
+                sh "mvn clean install"
+            }
+        }
+        stage('SonarQube Analysis') {
+             steps {
+                      dir('deployment'){
+                       echo 'Deploying to test'
+                       sh "ansible-playbook site.yml"
+                         }
+                    }
+            }
+
+        }
+        }
