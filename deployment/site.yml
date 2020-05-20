@@ -1,6 +1,6 @@
 ---
 - hosts: test
-  become: yes
+  remote_user: astha
   tasks:
   -  name: Deploy jar
      copy: src=/var/lib/jenkins/workspace/firstpipeline/target/backend-0.0.1-SNAPSHOT.jar dest=/tmp
