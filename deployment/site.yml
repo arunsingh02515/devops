@@ -1,6 +1,7 @@
 ---
 - hosts: test
-  remote_user: astha
+  sudo: true
+  sudoUser: jenkins
   tasks:
   - name: Set up multiple authorized keys
     authorized_key:
