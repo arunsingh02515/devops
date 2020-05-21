@@ -14,10 +14,14 @@ pipeline {
         }
         stage('Ansible deployment') {
              steps {
-                      dir('deployment'){
+
                        echo 'Deploying to test'
-                       sh "ansible-playbook -i dev-servers site.yml"
-                         }
+                       ansiblePlaybook (
+                       credentialsId: 'astha',
+                       inventory: 'deployment/dev-servers',
+                       playbook: 'deployment/site.yml'
+                       )
+
                     }
             }
 
