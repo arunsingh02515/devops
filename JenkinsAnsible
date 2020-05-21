@@ -18,6 +18,7 @@ pipeline {
                        echo 'Deploying to test'
                        ansiblePlaybook (
                        credentialsId: 'astha',
+                       disableHostKeyChecking: true,
                        inventory: 'deployment/dev-servers',
                        playbook: 'deployment/site.yml'
                        )
