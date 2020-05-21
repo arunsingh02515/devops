@@ -17,11 +17,11 @@ pipeline {
 
                        echo 'Deploying to test'
                        ansiblePlaybook (
-                       credentialsId: 'astha',
-                       disableHostKeyChecking: true,
-                       inventory: 'deployment/dev-servers',
-                       playbook: 'deployment/site.yml'
-                       )
+                        credentialsId: 'astha_linux_server',
+                        disableHostKeyChecking: true,
+                        inventory: 'deployment/dev-servers',
+                        playbook: 'deployment/site.yml'
+                        )
 
                     }
             }
