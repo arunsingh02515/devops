@@ -1,7 +1,7 @@
 ---
 - hosts: test
   become: true
-  become_user:astha   #ansadmin
+  become_user: astha   #ansadmin
   tasks:
   -  name: Deploy jar
      copy: src=/var/lib/jenkins/workspace/firstpipeline/target/backend-0.0.1-SNAPSHOT.jar dest=/tmp
